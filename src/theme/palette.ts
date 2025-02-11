@@ -1,25 +1,19 @@
-export const palette = {
+import { PaletteMode } from "@mui/material";
+
+export const getPalette = (mode: PaletteMode) => ({
+ mode,
  primary: {
-  main: "#1976d2", // Blue color
-  light: "#63a4ff",
-  dark: "#004ba0",
+  main: mode === "dark" ? "#90caf9" : "#1976d2",
  },
  secondary: {
-  main: "#9c27b0", // Purple color
-  light: "#d05ce3",
-  dark: "#6a0080",
+  main: mode === "dark" ? "#f48fb1" : "#d81b60",
  },
  background: {
-  default: "#f5f5f5", // Light gray background
-  paper: "#ffffff", // White paper
+  default: mode === "dark" ? "#121212" : "#f5f5f5",
+  paper: mode === "dark" ? "#1e1e1e" : "#ffffff",
  },
  text: {
-  primary: "#212121", // Black text
-  secondary: "#757575", // Gray text
-  disabled: "#bdbdbd", // Disabled text
+  primary: mode === "dark" ? "#ffffff" : "#000000",
+  secondary: mode === "dark" ? "#b0bec5" : "#4f4f4f",
  },
- error: {
-  main: "#f44336", // Red error color
- },
- // Add any other color you need here
-};
+});

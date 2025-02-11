@@ -1,19 +1,12 @@
 import { createTheme } from "@mui/material/styles";
-import { palette } from "./palette";
+import { getPalette } from "./palette";
 
-const theme = createTheme({
- palette, // Use the palette imported here
- typography: {
-  fontFamily: "'Roboto', sans-serif", // Default font family
-  h1: {
-   fontSize: "2.25rem", // Adjust font sizes
+export const getTheme = (mode: "light" | "dark") =>
+ createTheme({
+  palette: getPalette(mode),
+  typography: {
+   fontFamily: "'Roboto', sans-serif",
+   h1: { fontSize: "2.25rem" },
+   h2: { fontSize: "1.875rem" },
   },
-  h2: {
-   fontSize: "1.875rem",
-  },
-  // You can further customize other typography variants
- },
- // Add any other MUI theme customization here (spacing, overrides, etc.)
-});
-
-export default theme;
+ });
