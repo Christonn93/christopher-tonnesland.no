@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { getGithubUser } from "../api/githubApi";
-import { Header } from "../components";
 import { UserData } from "./routes.type";
 
 const Index: React.FC = () => {
@@ -19,22 +18,19 @@ const Index: React.FC = () => {
  }, []);
 
  return (
-  <div>
-   <Header />
-   <main>
-    {userData ? (
-     <div>
-      <h2>{userData.name}</h2>
-      <p>{userData.bio}</p>
-      <a href={userData.html_url} target="_blank" rel="noopener noreferrer">
-       GitHub Profile
-      </a>
-     </div>
-    ) : (
-     <p>Loading...</p>
-    )}
-   </main>
-  </div>
+  <main>
+   {userData ? (
+    <div>
+     <h2>{userData.name}</h2>
+     <p>{userData.bio}</p>
+     <a href={userData.html_url} target="_blank" rel="noopener noreferrer">
+      GitHub Profile
+     </a>
+    </div>
+   ) : (
+    <p>Loading...</p>
+   )}
+  </main>
  );
 };
 
