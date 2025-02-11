@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify";
 import { Layout } from "./components";
 import { Main } from "./routes/Main";
 import "./theme/style/form.css";
+import "./theme/style/globalStyle.css";
 
 export const App = () => {
  return (

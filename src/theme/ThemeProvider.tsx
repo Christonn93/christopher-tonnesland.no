@@ -1,21 +1,17 @@
-import { ThemeContext } from "@emotion/react";
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { ReactNode, useState } from "react";
-import { getTheme } from "./theme";
+import { CssBaseline, ThemeProvider as MUIThemeProvider } from "@mui/material";
+import { ReactNode } from "react";
+import { ColorModeContext, useMode } from "./theme";
+import { Theme } from "@emotion/react";
 
-export const ThemeProviderComp = ({ children }: { children: ReactNode }) => {
- const [mode, setMode] = useState<"light" | "dark">("light");
-
- const toggleTheme = () => setMode((prev) => (prev === "light" ? "dark" : "light"));
-
- const theme = getTheme(mode);
+export const ThemeProvider = ({ children }: { children: ReactNode }) => {
+ const [theme, colorMode] = useMode() as [Theme, { toggleColorMode: () => void }];
 
  return (
-  <ThemeContext.Provider value={{ mode, toggleTheme }}>
-   <ThemeProvider theme={theme}>
+  <ColorModeContext.Provider value={colorMode}>
+   <MUIThemeProvider theme={theme}>
     <CssBaseline />
     {children}
-   </ThemeProvider>
-  </ThemeContext.Provider>
+   </MUIThemeProvider>
+  </ColorModeContext.Provider>
  );
 };
